@@ -15,6 +15,7 @@
 
 import os
 import google.auth
+from dotenv import load_dotenv
 from google.adk.agents import Agent
 from google.adk.apps import App
 from google.adk.models import Gemini
@@ -22,10 +23,15 @@ from google.genai import types
 
 from .tools import store_knowledge, search_knowledge, list_sources
 
-_, project_id = google.auth.default()
-os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
-os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
-os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+load_dotenv()
+
+if not os.getenv("GOOGLE_CLOUD_PROJECT"):
+    _, auth_project = google.auth.default()
+    if auth_project:
+        os.environ["GOOGLE_CLOUD_PROJECT"] = auth_project
+
+os.environ.setdefault("GOOGLE_CLOUD_LOCATION", "global")
+os.environ.setdefault("GOOGLE_GENAI_USE_VERTEXAI", "True")
 
 _model = Gemini(
     model="gemini-flash-latest",
