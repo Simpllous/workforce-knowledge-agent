@@ -1,0 +1,25 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "retrieval_torque_spec",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "What torque should I use when tightening cylinder head bolts?"}]
+      }
+    },
+    {
+      "eval_case_id": "retrieval_hydraulic_fault",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "The hydraulic press is not reaching full tonnage. What should I check?"}]
+      }
+    },
+    {
+      "eval_case_id": "retrieval_oil_pressure",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Oil pressure drops after the engine warms up. What causes this and how do I diagnose it?"}]
+      }
+    }
+  ]
+}
